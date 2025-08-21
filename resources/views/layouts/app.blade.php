@@ -15,12 +15,14 @@
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('css/login.css') }}">
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 <body>
     <div id="app">
+        @if (!Request::is('login'))
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
@@ -74,8 +76,8 @@
                 </div>
             </div>
         </nav>
-
-        <main class="py-4">
+        @endif
+        <main class="{{ Request::is('login') ? '' : 'py-4' }}">
             @yield('content')
         </main>
     </div>
