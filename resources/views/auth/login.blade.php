@@ -7,8 +7,8 @@
         <form action="{{ route('login') }}" method="POST">
             @csrf
             <div class="form-group">
-                <label for="username">ユーザー名</label>
-                <input type="text" id="username" name="username" required value="{{ old('username') }}" autofocus>
+                <label for="student_id">学生ID</label>
+                <input type="text" id="student_id" name="student_id" required value="{{ old('student_id') }}" autofocus>
             </div>
             <div class="form-group">
                 <label for="password">パスワード</label>

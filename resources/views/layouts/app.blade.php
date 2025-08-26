@@ -19,10 +19,12 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    
+    @stack('styles')
 </head>
 <body>
     <div id="app">
-        @if (!Request::is('login'))
+        @if (!Request::is('login') && !Request::is('register'))
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
@@ -55,11 +57,24 @@
                             @endif
                         @else
                             <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }}
+                                <a id="navbarDropdown" class="nav-link" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                    <svg width="24" height="24" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
+                                        <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+                                        <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
+                                    </svg>
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                    <p>{{ Auth::user()->student_id }}</p>
+                                    @if(Auth::user()->nickname)
+                                        <p>{{ Auth::user()->nickname }}</p>
+                                    @else
+                                        <p>{{ Auth::user()->last_name }} {{ Auth::user()->first_name }}</p>
+                                    @endif
+                                    <p><strong>チケット数:</strong> {{ Auth::user()->ticket_amount }}</p>
+                                    @if(Auth::user()->email)
+                                        <p><strong>メールアドレス:</strong> {{ Auth::user()->email }}</p>
+                                    @endif
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
@@ -77,7 +92,7 @@
             </div>
         </nav>
         @endif
-        <main class="{{ Request::is('login') ? '' : 'py-4' }}">
+        <main class="{{ Request::is('login') || Request::is('register') ? '' : 'py-4' }}">
             @yield('content')
         </main>
     </div>
