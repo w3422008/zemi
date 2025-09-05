@@ -16,23 +16,17 @@ class StudentSeeder extends Seeder
     public function run()
     {
         Student::create([
-            'student_id' => 'S0000001',
-            'first_name' => 'テスト',
-            'last_name' => '太郎',
-            'nickname' => 'test_user',
-            'password' => Hash::make('password'),
-            'ticket_amount' => 10,
+            'id' => 'S0000001',
+            'display_name' => 'テスト太郎',
             'email' => 'test@example.com',
+            'password' => Hash::make('password'),
         ]);
 
         Student::create([
-            'student_id' => 'S0000002',
-            'first_name' => 'サンプル',
-            'last_name' => '花子',
-            'nickname' => 'sample_user',
-            'password' => Hash::make('password'),
-            'ticket_amount' => 5,
+            'id' => 'S0000002',
+            'display_name' => 'サンプル花子',
             'email' => 'sample@example.com',
+            'password' => Hash::make('password'),
         ]);
     }
 }

@@ -65,15 +65,9 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                    <p>{{ Auth::user()->student_id }}</p>
-                                    @if(Auth::user()->nickname)
-                                        <p>{{ Auth::user()->nickname }}</p>
-                                    @else
-                                        <p>{{ Auth::user()->last_name }} {{ Auth::user()->first_name }}</p>
-                                    @endif
-                                    <p><strong>チケット数:</strong> {{ Auth::user()->ticket_amount }}</p>
-                                    @if(Auth::user()->email)
-                                        <p><strong>メールアドレス:</strong> {{ Auth::user()->email }}</p>
+                                    <p>{{ Auth::user()->id }}</p>
+                                    @if(Auth::user()->display_name)
+                                        <p>{{ Auth::user()->display_name }}</p>
                                     @endif
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
@@ -96,5 +90,7 @@
             @yield('content')
         </main>
     </div>
+    
+    @stack('scripts')
 </body>
 </html>

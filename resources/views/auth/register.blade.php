@@ -8,42 +8,24 @@
             @csrf
 
             <div class="form-group">
-                <label for="student_id">学生ID</label>
-                <input id="student_id" type="text" name="student_id" value="{{ old('student_id') }}" required autocomplete="student_id" autofocus>
-                @error('student_id')
-                    <p style="color: red; font-size: 12px;">{{ $message }}</p>
-                @enderror
-            </div>
-
-            <div class="form-row" style="display: flex; gap: 10px;">
-                <div class="form-group" style="flex: 1;">
-                    <label for="last_name">姓</label>
-                    <input id="last_name" type="text" name="last_name" value="{{ old('last_name') }}" required autocomplete="family-name">
-                    @error('last_name')
-                        <p style="color: red; font-size: 12px;">{{ $message }}</p>
-                    @enderror
-                </div>
-
-                <div class="form-group" style="flex: 1;">
-                    <label for="first_name">名</label>
-                    <input id="first_name" type="text" name="first_name" value="{{ old('first_name') }}" required autocomplete="given-name">
-                    @error('first_name')
-                        <p style="color: red; font-size: 12px;">{{ $message }}</p>
-                    @enderror
-                </div>
-            </div>
-
-            <div class="form-group">
-                <label for="nickname">ニックネーム（任意）</label>
-                <input id="nickname" type="text" name="nickname" value="{{ old('nickname') }}" autocomplete="nickname">
-                @error('nickname')
+                <label for="id">学生ID</label>
+                <input id="id" type="text" name="id" value="{{ old('id') }}" required autocomplete="id" autofocus>
+                @error('id')
                     <p style="color: red; font-size: 12px;">{{ $message }}</p>
                 @enderror
             </div>
 
             <div class="form-group">
-                <label for="email">メールアドレス（任意）</label>
-                <input id="email" type="email" name="email" value="{{ old('email') }}" autocomplete="email">
+                <label for="display_name">表示名</label>
+                <input id="display_name" type="text" name="display_name" value="{{ old('display_name') }}" required autocomplete="name">
+                @error('display_name')
+                    <p style="color: red; font-size: 12px;">{{ $message }}</p>
+                @enderror
+            </div>
+
+            <div class="form-group">
+                <label for="email">メールアドレス</label>
+                <input id="email" type="email" name="email" value="{{ old('email') }}" required autocomplete="email">
                 @error('email')
                     <p style="color: red; font-size: 12px;">{{ $message }}</p>
                 @enderror

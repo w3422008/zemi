@@ -13,9 +13,10 @@ class Student extends Authenticatable
     use HasApiTokens, HasFactory, Notifiable;
 
     protected $table = 'students';
-    protected $primaryKey = 'student_id';
+    protected $primaryKey = 'id';
     public $incrementing = false;
     protected $keyType = 'string';
+    public $timestamps = false;
 
     /**
      * The attributes that are mass assignable.
@@ -23,13 +24,10 @@ class Student extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
-        'student_id',
-        'first_name',
-        'last_name',
-        'nickname',
-        'password',
-        'ticket_amount',
+        'id',
+        'display_name',
         'email',
+        'password',
     ];
 
     /**
@@ -58,7 +56,7 @@ class Student extends Authenticatable
      */
     public function getAuthIdentifierName()
     {
-        return 'student_id';
+        return 'id';
     }
 
     /**
@@ -68,7 +66,7 @@ class Student extends Authenticatable
      */
     public function getAuthIdentifier()
     {
-        return $this->getAttribute('student_id');
+        return $this->getAttribute('id');
     }
 
     /**
@@ -79,13 +77,5 @@ class Student extends Authenticatable
     public function getAuthPassword()
     {
         return $this->getAttribute('password');
-    }
-
-    /**
-     * Get the full name attribute.
-     */
-    public function getNameAttribute()
-    {
-        return $this->first_name . ' ' . $this->last_name;
     }
 }
