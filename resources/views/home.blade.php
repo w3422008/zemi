@@ -10,6 +10,21 @@
 
 @section('content')
 <div class="container">
+    <!-- セッションメッセージの表示 -->
+    @if(session('success'))
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            {{ session('success') }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        </div>
+    @endif
+    
+    @if(session('error'))
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            {{ session('error') }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        </div>
+    @endif
+
     <div class="menu-container">
         <a href="#" class="menu-item">
             <div class="menu-icon">
@@ -56,9 +71,9 @@
         <button class="modal-close" onclick="closeModal()">&times;</button>
         <div class="modal-header">分野を選んでください</div>
         <div class="modal-links">
-            <a href="#" class="modal-link">医学・医療系</a>
-            <a href="#" class="modal-link">情報処理技術系</a>
-            <a href="#" class="modal-link">医療情報システム系</a>
+            <a href="{{ route('exam.prepare', 'medical') }}" class="modal-link">医学・医療系</a>
+            <a href="{{ route('exam.prepare', 'processing') }}" class="modal-link">情報処理技術系</a>
+            <a href="{{ route('exam.prepare', 'system') }}" class="modal-link">医療情報システム系</a>
         </div>
     </div>
 </div>

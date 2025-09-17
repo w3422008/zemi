@@ -29,3 +29,11 @@ Route::get('/ranking', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+// 模擬試験機能のルート
+Route::middleware('auth')->group(function () {
+    Route::get('/exam/prepare/{category}', [App\Http\Controllers\ExamController::class, 'prepare'])->name('exam.prepare');
+    Route::get('/exam/start/{category}', [App\Http\Controllers\ExamController::class, 'start'])->name('exam.start');
+    Route::post('/exam/finish', [App\Http\Controllers\ExamController::class, 'finish'])->name('exam.finish');
+    Route::get('/exam/result/{scoreId}', [App\Http\Controllers\ExamController::class, 'result'])->name('exam.result');
+});
