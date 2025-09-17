@@ -9,7 +9,7 @@
 @endpush
 
 @section('content')
-<div class="container">
+<div class="exam_container">
     <div class="exam-container">
         <!-- 試験ヘッダー -->
         <div class="exam-header">

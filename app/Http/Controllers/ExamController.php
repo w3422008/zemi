@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Log;
 use App\Models\Question;
 use App\Models\Option;
 use App\Models\Score;
@@ -106,13 +105,6 @@ class ExamController extends Controller
         
         // 回答データの取得
         $answers = $request->input('answers', []);
-        
-        // デバッグ用ログ
-        Log::info('Exam finish request data:', [
-            'all_data' => $request->all(),
-            'answers' => $answers,
-            'questions_count' => count($questions)
-        ]);
         
         // スコアIDの生成（日付・時間+ユーザーid+分野名）
         $scoreId = now()->format('YmdHis') . $student->id . $category;

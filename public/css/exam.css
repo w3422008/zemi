@@ -1,7 +1,7 @@
 /* 模擬試験用スタイル */
 
 /* 共通スタイル */
-.container {
+.exam_container {
     max-width: 1200px;
     margin: 0 auto;
     padding: 20px;

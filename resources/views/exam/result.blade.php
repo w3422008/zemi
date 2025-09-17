@@ -117,7 +117,7 @@
 @endpush
 
 @section('content')
-<div class="container">
+<div class="exam_container">
     <!-- 結果ヘッダー -->
     <div class="result-header">
         <h1>{{ $categoryInfo['name'] }} 模擬試験結果</h1>

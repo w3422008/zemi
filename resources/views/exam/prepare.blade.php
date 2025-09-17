@@ -5,7 +5,7 @@
 @endpush
 
 @section('content')
-<div class="container">
+<div class="exam_container">
     <div class="exam-prepare-container">
         <h1 class="page-title">{{ $categoryInfo['name'] }} 模擬試験</h1>
         
